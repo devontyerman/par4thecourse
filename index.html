@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Par 4 The Course — Premier Indoor Golf Simulators | Pinellas County, FL</title>
+  <meta name="description" content="Par 4 The Course offers premium TrackMan golf simulator experiences in Pinellas County, Florida. Book your session today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #1a5c2a;
+      --green-dark: #0f3d1a;
+      --green-light: #2a7a3d;
+      --green-accent: #34c759;
+      --white: #ffffff;
+      --off-white: #f5f7f5;
+      --charcoal: #1c1c1e;
+      --charcoal-light: #2c2c2e;
+      --gray: #8e8e93;
+      --gray-light: #d1d1d6;
+      --font-display: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--charcoal);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(15, 61, 26, 0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      padding: 0.6rem 2rem;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--green-accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green-accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn-book {
+      display: inline-block;
+      background: var(--green-accent);
+      color: var(--charcoal);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.65rem 1.6rem;
+      border-radius: 50px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-book:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 199, 89, 0.4);
+      background: #3edf68;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(160deg, var(--charcoal) 0%, var(--green-dark) 40%, var(--green) 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(52, 199, 89, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(26, 92, 42, 0.15) 0%, transparent 70%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-flag {
+      position: absolute;
+      bottom: 12%;
+      right: 10%;
+      opacity: 0.06;
+      font-size: 18rem;
+      line-height: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(52, 199, 89, 0.15);
+      border: 1px solid rgba(52, 199, 89, 0.3);
+      color: var(--green-accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 .accent { color: var(--green-accent); }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero .btn-book {
+      font-size: 1rem;
+      padding: 1rem 2.8rem;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .hero-scroll .chevron {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 6rem 2rem; }
+
+    .section-dark {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .section-green {
+      background: linear-gradient(160deg, var(--green-dark), var(--green));
+      color: var(--white);
+    }
+
+    .section-light { background: var(--off-white); }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-dark .section-label,
+    .section-green .section-label {
+      color: var(--green-accent);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .section-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--gray);
+      max-width: 680px;
+    }
+
+    .section-dark .section-text { color: rgba(255,255,255,0.65); }
+    .section-green .section-text { color: rgba(255,255,255,0.8); }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      border-radius: 20px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-visual-icon {
+      font-size: 8rem;
+      opacity: 0.15;
+    }
+
+    .about-visual-text {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .feature-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .chip {
+      background: rgba(26, 92, 42, 0.08);
+      border: 1px solid rgba(26, 92, 42, 0.15);
+      color: var(--green);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+    }
+
+    /* ─── ABOUT DETAILS ─── */
+    .about-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .about-detail-card {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .about-detail-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-detail-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    .about-detail-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    .about-differentiators {
+      margin-top: 4rem;
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .diff-item {
+      background: var(--off-white);
+      border-radius: 14px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--green-accent);
+    }
+
+    .diff-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .diff-item h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--charcoal);
+    }
+
+    .diff-item p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+
+    /* ─── SIMULATORS ─── */
+    .sim-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .sim-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .sim-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(52, 199, 89, 0.3);
+    }
+
+    .sim-card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .sim-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .sim-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .trackman-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(52, 199, 89, 0.1);
+      border: 1px solid rgba(52, 199, 89, 0.25);
+      color: var(--green-accent);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      margin-top: 1.5rem;
+    }
+
+    /* ─── COMPARISON ─── */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 3rem;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+
+    .compare-col {
+      padding: 0;
+    }
+
+    .compare-header {
+      padding: 1.5rem 2rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .compare-col.trackman-col .compare-header {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .compare-col.other-col .compare-header {
+      background: rgba(255,255,255,0.06);
+      color: var(--gray);
+    }
+
+    .compare-row {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .compare-cell {
+      flex: 1;
+      padding: 1.1rem 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .compare-cell:first-child {
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .compare-row:last-child .compare-cell {
+      border-bottom: none;
+    }
+
+    .compare-cell.win {
+      background: rgba(52, 199, 89, 0.06);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .compare-cell.lose {
+      color: rgba(255,255,255,0.35);
+    }
+
+    .compare-cell .check {
+      color: var(--green-accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .compare-cell .cross {
+      color: #ff453a;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .compare-category {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      padding: 0.8rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      grid-column: 1 / -1;
+    }
+
+    .compare-bottom {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .compare-bottom p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── OWNER ─── */
+    .owner-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .owner-photo {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      border-radius: 20px;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .owner-photo-icon {
+      font-size: 5rem;
+      opacity: 0.2;
+    }
+
+    .owner-photo-label {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background: rgba(0,0,0,0.3);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .owner-quote {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--green);
+      border-left: 4px solid var(--green-accent);
+      padding-left: 1.2rem;
+      margin-top: 1.5rem;
+      line-height: 1.5;
+    }
+
+    /* ─── FOOD & DRINKS ─── */
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .drink-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .drink-card:hover { transform: translateY(-4px); }
+
+    .drink-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .drink-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .drink-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── PRICING ─── */
+    .pricing-table-wrap {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      background: var(--white);
+      border: 2px solid var(--gray-light);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .pricing-table thead th {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      border-bottom: 2px solid var(--off-white);
+    }
+
+    .pricing-table thead th:last-child {
+      text-align: right;
+    }
+
+    .pricing-table tbody tr {
+      transition: background 0.2s;
+    }
+
+    .pricing-table tbody tr:hover {
+      background: rgba(26, 92, 42, 0.03);
+    }
+
+    .pricing-table tbody tr.row-popular {
+      background: rgba(26, 92, 42, 0.04);
+    }
+
+    .pricing-table tbody td {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--off-white);
+      vertical-align: middle;
+    }
+
+    .pricing-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pricing-table td:last-child {
+      text-align: right;
+    }
+
+    .pricing-table td strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--charcoal);
+    }
+
+    .price-note {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 2px;
+    }
+
+    .table-price {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: var(--green);
+    }
+
+    .pricing-table td:nth-child(2) {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      white-space: nowrap;
+    }
+
+    .btn-book-sm {
+      font-size: 0.7rem;
+      padding: 0.5rem 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .pricing-includes {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--off-white);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .pricing-includes span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* ─── BOOKING ─── */
+    .booking-content {
+      text-align: center;
+    }
+
+    .booking-placeholder {
+      background: rgba(255,255,255,0.06);
+      border: 2px dashed rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 4rem 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .booking-placeholder-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .booking-placeholder h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .booking-placeholder p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.95rem;
+    }
+
+    .booking-cta {
+      margin-top: 2.5rem;
+    }
+
+    .booking-cta .btn-book {
+      font-size: 1.1rem;
+      padding: 1rem 3rem;
+    }
+
+    /* ─── LOCATION / MAP ─── */
+    .map-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .map-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .map-address {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--charcoal);
+    }
+
+    .map-address-icon { font-size: 2rem; }
+
+    .btn-directions {
+      white-space: nowrap;
+      font-size: 0.85rem;
+      padding: 0.7rem 1.6rem;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.5);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-brand .nav-logo { font-size: 1.2rem; }
+
+    .footer-brand p {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .footer h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--green-accent); }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .social-link:hover {
+      background: rgba(52, 199, 89, 0.15);
+      border-color: rgba(52, 199, 89, 0.3);
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-grid,
+      .owner-grid { grid-template-columns: 1fr; }
+
+      .about-details { grid-template-columns: 1fr; }
+
+      .diff-grid { grid-template-columns: 1fr; }
+
+      .owner-photo { max-width: 260px; }
+
+      .sim-features { grid-template-columns: 1fr 1fr; }
+
+      .drinks-grid { grid-template-columns: 1fr 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+
+      .map-info { flex-direction: column; gap: 1.5rem; text-align: center; }
+
+      .map-address { flex-direction: column; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--green-dark);
+        flex-direction: column;
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        transition: right 0.35s ease;
+        box-shadow: -4px 0 30px rgba(0,0,0,0.3);
+      }
+
+      .nav-links.open { right: 0; }
+
+      .nav-links a { font-size: 1.1rem; }
+
+      .hamburger { display: flex; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .sim-features { grid-template-columns: 1fr; }
+
+      .compare-row { flex-direction: column; }
+
+      .compare-cell:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+      .compare-cell { padding: 1rem 1.2rem; font-size: 0.85rem; }
+
+      .drinks-grid { grid-template-columns: 1fr 1fr; }
+
+      .pricing-table thead th:last-child,
+      .pricing-table td:last-child { display: none; }
+
+      .pricing-includes { flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">PAR 4 <span>THE COURSE</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#simulators" onclick="closeMenu()">Simulators</a></li>
+      <li><a href="#owner" onclick="closeMenu()">Our Story</a></li>
+      <li><a href="#drinks" onclick="closeMenu()">Food & Drinks</a></li>
+      <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
+      <li><a href="#booking" class="btn-book" onclick="closeMenu()">Book Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-flag">&#9971;</div>
+    <div class="hero-content">
+      <div class="hero-badge">Pinellas County's Premier Simulator Experience</div>
+      <h1>Tee Off<br /><span class="accent">Any Time.</span></h1>
+      <p>Experience world-class indoor golf powered by TrackMan technology. Play legendary courses, sharpen your game, and enjoy great company — rain or shine.</p>
+      <a href="#booking" class="btn-book">Book Your Bay</a>
+    </div>
+    <a href="#about" class="hero-scroll">
+      Explore
+      <div class="chevron"></div>
+    </a>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid fade-up">
+        <div class="about-visual">
+          <div class="about-visual-icon">&#9971;</div>
+          <div class="about-visual-text">Clearwater, FL</div>
+        </div>
+        <div>
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">Clearwater's Home for<br />Indoor Golf.</h2>
+          <p class="section-text">
+            Welcome to Par 4 The Course, Clearwater's destination for year-round indoor golf powered by TrackMan technology. Whether you're a seasoned golfer, a weekend player, or just looking for a fun experience with friends, our simulators deliver a premium golf experience for every skill level.
+          </p>
+          <div class="feature-chips">
+            <span class="chip">All Skill Levels</span>
+            <span class="chip">Climate Controlled</span>
+            <span class="chip">TrackMan Technology</span>
+            <span class="chip">Year-Round Play</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- About sub-sections -->
+      <div class="about-details fade-up">
+        <div class="about-detail-card">
+          <div class="about-detail-icon">&#128218;</div>
+          <h3>Our Story</h3>
+          <p>Par 4 The Course was created with one goal: make golf more accessible, enjoyable, and completely weatherproof for our community. Florida weather can be unpredictable, so we built a space where golfers can play, practice, and compete rain or shine, day or night.</p>
+        </div>
+        <div class="about-detail-card">
+          <div class="about-detail-icon">&#127942;</div>
+          <h3>Our Technology</h3>
+          <p>Our facility features two state-of-the-art TrackMan simulators, trusted by PGA professionals around the world for their precision and realism. With access to over 180 virtual golf courses, including 43 Tour venues, you can experience some of the most iconic courses on the planet without leaving Clearwater.</p>
+        </div>
+      </div>
+
+      <div class="about-differentiators fade-up">
+        <h3 class="section-title" style="text-align:center; font-size: 1.6rem; margin-bottom: 2rem;">What Makes Us Different</h3>
+        <div class="diff-grid">
+          <div class="diff-item">
+            <div class="diff-icon">&#128202;</div>
+            <h4>TrackMan Technology</h4>
+            <p>The gold standard in golf simulation. Get instant feedback on every shot, analyze your swing, and improve your game with professional-level data.</p>
+          </div>
+          <div class="diff-item">
+            <div class="diff-icon">&#128101;</div>
+            <h4>Flexible Play</h4>
+            <p>Book a bay for solo practice, a round with friends, or join our monthly leagues. Each simulator bay accommodates up to six players, making it perfect for groups and events.</p>
+          </div>
+          <div class="diff-item">
+            <div class="diff-icon">&#129309;</div>
+            <h4>Community Focus</h4>
+            <p>We're building more than a golf facility — we're building a community of golfers. Stay tuned for our upcoming membership program with exclusive perks.</p>
+          </div>
+          <div class="diff-item">
+            <div class="diff-icon">&#9728;</div>
+            <h4>No Weather, No Waiting</h4>
+            <p>Enjoy golf on your schedule without worrying about rain, heat, or humidity. Our climate-controlled bays are ready whenever you are.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SIMULATORS ═══ -->
+  <section id="simulators" class="section-dark">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label">Our Simulators</div>
+        <h2 class="section-title">Powered by TrackMan.</h2>
+        <p class="section-text">
+          We run multiple TrackMan simulators — the same tour-standard launch monitor and simulator system trusted by PGA Tour professionals, top coaches, and elite club fitters worldwide. Every swing is captured with military-grade radar precision, giving you real data on ball speed, launch angle, spin rate, carry distance, and more.
+        </p>
+        <div class="trackman-badge">&#127948; Official TrackMan Facility</div>
+      </div>
+      <div class="sim-features fade-up">
+        <div class="sim-card">
+          <div class="sim-card-icon">&#127759;</div>
+          <h3>World-Famous Courses</h3>
+          <p>Play Pebble Beach, St Andrews, TPC Sawgrass, and hundreds of other legendary courses in stunning detail.</p>
+        </div>
+        <div class="sim-card">
+          <div class="sim-card-icon">&#128202;</div>
+          <h3>Tour-Level Data</h3>
+          <p>Track every metric that matters — ball speed, spin, launch angle, club path, and shot shape — just like the pros.</p>
+        </div>
+        <div class="sim-card">
+          <div class="sim-card-icon">&#127942;</div>
+          <h3>Compete & Improve</h3>
+          <p>Play closest-to-the-pin, longest drive, or stroke play with friends. Real game modes, real competition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRACKMAN COMPARISON ═══ -->
+  <section id="why-trackman" class="section-dark" style="border-top: 1px solid rgba(255,255,255,0.06);">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width: 650px; margin: 0 auto;">
+        <div class="section-label">Why TrackMan?</div>
+        <h2 class="section-title">Not All Simulators Are Equal.</h2>
+        <p class="section-text" style="margin: 0 auto; color: rgba(255,255,255,0.65);">
+          There are plenty of simulator brands out there — but TrackMan is in a league of its own. Here's how it stacks up against competitors like SkyTrak, Garmin Approach, FlightScope, and others.
+        </p>
+      </div>
+
+      <div class="fade-up" style="margin-top: 3rem; border-radius: 20px; overflow: hidden; border: 2px solid rgba(255,255,255,0.08);">
+        <!-- Header row -->
+        <div class="compare-row">
+          <div class="compare-cell win" style="padding: 1.3rem 1.5rem; background: var(--green);">
+            <strong style="font-family: var(--font-display); font-size: 1.05rem; color: var(--white);">&#127948; TrackMan</strong>
+          </div>
+          <div class="compare-cell lose" style="padding: 1.3rem 1.5rem; background: rgba(255,255,255,0.04);">
+            <strong style="font-family: var(--font-display); font-size: 1.05rem; color: var(--gray);">Other Simulators</strong>
+          </div>
+        </div>
+
+        <!-- 1. Tracking Technology -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>Dual radar technology</strong> — tracks both club and ball with military-grade precision</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>Camera-based or single radar — less accurate, affected by lighting conditions</span>
+          </div>
+        </div>
+
+        <!-- 2. Tour Adoption -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>Used by 98% of PGA Tour</strong> pros, top coaches, and major equipment fitters worldwide</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>Limited or no professional tour adoption — primarily consumer-grade devices</span>
+          </div>
+        </div>
+
+        <!-- 3. Data Points -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>40+ data parameters</strong> per shot — ball speed, spin axis, launch angle, club path, attack angle, and more</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>Typically 10–20 metrics — many are estimated or interpolated rather than directly measured</span>
+          </div>
+        </div>
+
+        <!-- 4. Accuracy -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>&#177;1 yard carry distance accuracy</strong> — the gold standard that all other systems are measured against</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>&#177;3–10 yard variance common — spin and distance readings can drift significantly</span>
+          </div>
+        </div>
+
+        <!-- 5. Outdoor + Indoor -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>Works flawlessly indoors and outdoors</strong> — same hardware used on Tour driving ranges</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>Many systems are indoor-only or require different hardware/calibration for outdoor use</span>
+          </div>
+        </div>
+
+        <!-- 6. Course Library & Graphics -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>180+ courses including 43 real Tour venues</strong> with high-fidelity graphics and accurate elevation data</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>Smaller course libraries — many courses are computer-generated rather than laser-scanned</span>
+          </div>
+        </div>
+
+        <!-- 7. Club Data -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>Full club data measured directly</strong> — face angle, club path, dynamic loft, and impact location</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>Club data often estimated from ball flight or requires additional sensors/stickers</span>
+          </div>
+        </div>
+
+        <!-- 8. Spin Measurement -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>Direct spin measurement via radar</strong> — accurate backspin, sidespin, and spin axis on every shot</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>Spin often calculated from ball flight algorithms — unreliable on short game and partial shots</span>
+          </div>
+        </div>
+
+        <!-- 9. Multiplayer & Game Modes -->
+        <div class="compare-row">
+          <div class="compare-cell win">
+            <span class="check">&#10003;</span> <span><strong>Built-in competitive modes</strong> — closest-to-the-pin, long drive, stroke play, and virtual tournaments</span>
+          </div>
+          <div class="compare-cell lose">
+            <span class="cross">&#10007;</span> <span>Basic game modes — many lack real-time leaderboard and multi-player features</span>
+          </div>
+        </div>
+
+        <!-- 10. Reliability -->
+        <div class="compare-row">
+          <div class="compare-cell win" style="border-bottom: none;">
+            <span class="check">&#10003;</span> <span><strong>Zero calibration needed</strong> — powered on and ready to go in seconds with consistent readings every session</span>
+          </div>
+          <div class="compare-cell lose" style="border-bottom: none;">
+            <span class="cross">&#10007;</span> <span>Frequent recalibration required — readings can drift over time and between sessions</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-bottom fade-up">
+        <p>When you play at Par 4 The Course, you're playing on the same tech the pros trust.</p>
+        <a href="#booking" class="btn-book">Experience TrackMan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ OWNER ═══ -->
+  <section id="owner" class="section-light">
+    <div class="container">
+      <div class="owner-grid fade-up">
+        <div class="owner-photo">
+          <div class="owner-photo-icon">&#9971;</div>
+          <div class="owner-photo-label">Photo coming soon</div>
+        </div>
+        <div>
+          <div class="section-label">About the Owner</div>
+          <h2 class="section-title">Meet Tyson.<br />Born & Raised in Pinellas.</h2>
+          <p class="section-text">
+            Growing up in the St. Pete and Clearwater area, Tyson developed a love for golf at an early age. What started with weekend rounds at local munis and high school golf team practices turned into a lifelong passion for the game and the community it builds.
+          </p>
+          <p class="section-text" style="margin-top: 1rem;">
+            After years of traveling to find high-end simulator experiences, Tyson's vision became clear: bring world-class golf technology home to Pinellas County. Par 4 The Course was built on his belief that everyone deserves access to the same tools the pros use — in a space that feels welcoming whether you're a scratch golfer or swinging for the very first time.
+          </p>
+          <div class="owner-quote">
+            "I wanted to build the place I always wished existed in my hometown — somewhere anyone can walk in, grab a drink, and fall in love with golf."
+          </div>
+          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--gray); font-style: italic;">* Biography can be updated with real details</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOD & DRINKS ═══ -->
+  <section id="drinks" class="section-green">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto;">
+        <div class="section-label">Food & Drinks</div>
+        <h2 class="section-title">Swing. Sip. Repeat.</h2>
+        <p class="section-text" style="margin: 0 auto; color: rgba(255,255,255,0.8);">
+          Great golf deserves great company — and a cold drink in hand. Our lounge serves beer, seltzers, and soft drinks so you can keep things relaxed between swings.
+        </p>
+      </div>
+      <div class="drinks-grid fade-up">
+        <div class="drink-card">
+          <div class="drink-icon">&#127866;</div>
+          <h3>Cold Beer</h3>
+          <p>Local & national favorites on tap</p>
+        </div>
+        <div class="drink-card">
+          <div class="drink-icon">&#129380;</div>
+          <h3>Seltzers</h3>
+          <p>Light & refreshing options</p>
+        </div>
+        <div class="drink-card">
+          <div class="drink-icon">&#129381;</div>
+          <h3>Soft Drinks</h3>
+          <p>Sodas, water & energy drinks</p>
+        </div>
+        <div class="drink-card">
+          <div class="drink-icon">&#127860;</div>
+          <h3>Snacks</h3>
+          <p>Grab something between rounds</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: 2.5rem;" class="fade-up">
+        <p style="color:rgba(255,255,255,0.6); font-size: 0.9rem;">Perfect for date nights, corporate outings, birthday parties & more</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section id="pricing">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto 1rem;">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Simple, Transparent Pricing.</h2>
+        <p class="section-text" style="margin: 0 auto;">
+          Reserve a bay and bring your crew. All sessions include full TrackMan access, 180+ courses, and game modes.
+        </p>
+      </div>
+      <div class="pricing-table-wrap fade-up">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Players</th>
+              <th>Rate</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1 Player</strong><span class="price-note">Solo practice or lesson</span></td>
+              <td><span class="table-price">$25</span> / hr</td>
+              <td><a href="#booking" class="btn-book btn-book-sm">Book Now</a></td>
+            </tr>
+            <tr>
+              <td><strong>2 Players</strong><span class="price-note">Perfect for a buddy round</span></td>
+              <td><span class="table-price">$35</span> / hr</td>
+              <td><a href="#booking" class="btn-book btn-book-sm">Book Now</a></td>
+            </tr>
+            <tr class="row-popular">
+              <td><strong>3 Players</strong><span class="price-note">Great for a group outing</span></td>
+              <td><span class="table-price">$45</span> / hr</td>
+              <td><a href="#booking" class="btn-book btn-book-sm">Book Now</a></td>
+            </tr>
+            <tr>
+              <td><strong>4 Players</strong><span class="price-note">Full foursome experience</span></td>
+              <td><span class="table-price">$55</span> / hr</td>
+              <td><a href="#booking" class="btn-book btn-book-sm">Book Now</a></td>
+            </tr>
+            <tr>
+              <td><strong>Up to 6 Players</strong><span class="price-note">Parties, events & celebrations</span></td>
+              <td><span class="table-price">$60</span> / hr</td>
+              <td><a href="#booking" class="btn-book btn-book-sm">Book Now</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pricing-includes">
+          <span>&#10003; TrackMan Simulator</span>
+          <span>&#10003; 180+ Courses</span>
+          <span>&#10003; Shot Analytics</span>
+          <span>&#10003; Clubs Available</span>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: 2.5rem;" class="fade-up">
+        <a href="#booking" class="btn-book" style="font-size: 1rem; padding: 1rem 3rem;">Book Your Bay</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BOOKING ═══ -->
+  <section id="booking" class="section-dark">
+    <div class="container">
+      <div class="booking-content fade-up">
+        <div class="section-label">Book Your Session</div>
+        <h2 class="section-title">Ready to Play?</h2>
+        <p class="section-text" style="margin: 0 auto; color: rgba(255,255,255,0.65);">
+          Reserve your bay in just a few clicks. Walk in, grab a drink, and start swinging.
+        </p>
+        <div style="margin-top: 3rem; background: rgba(255,255,255,0.04); border-radius: 20px; padding: 1.5rem; min-height: 600px;">
+          <iframe src="https://api.leadconnectorhq.com/widget/booking/LfgSGIXADvvt9rfVnADc" style="width: 100%; min-height: 700px; border: none; overflow: hidden; border-radius: 12px;" scrolling="no" id="LfgSGIXADvvt9rfVnADc_1773518049180"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LOCATION ═══ -->
+  <section id="location" class="section-light">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto 2.5rem;">
+        <div class="section-label">Location</div>
+        <h2 class="section-title">Find Us in Clearwater.</h2>
+        <p class="section-text" style="margin: 0 auto;">
+          We're located on US-19 in Clearwater — easy to find, plenty of parking, and just minutes from St. Pete, Dunedin, and Tampa.
+        </p>
+      </div>
+      <div class="map-wrap fade-up">
+        <iframe src="https://maps.google.com/maps?q=22069+US+Hwy+19+N,+Clearwater,+FL+33765&t=&z=15&ie=UTF8&iwloc=&output=embed" style="border:0; width:100%; height:400px; border-radius: 16px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="map-info fade-up">
+        <div class="map-address">
+          <span class="map-address-icon">&#128205;</span>
+          <div>
+            <strong>Par 4 The Course</strong><br />
+            22069 US Hwy 19 N<br />
+            Clearwater, FL 33765
+          </div>
+        </div>
+        <a href="#" id="directionsBtn" class="btn-book btn-directions">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">PAR 4 <span>THE COURSE</span></a>
+        <p>Pinellas County's premier indoor golf simulator experience. Powered by TrackMan. Open to everyone.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#simulators">Simulators</a></li>
+          <li><a href="#owner">Our Story</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#booking">Book Now</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+17273306548">&#9742; (727) 330-6548</a></li>
+          <li><a href="mailto:Tyson@par4tc.com">&#9993; Tyson@par4tc.com</a></li>
+          <li>&#128205; 22069 US Hwy 19 N<br />Clearwater, FL 33765</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">&#128247;</a>
+          <a href="#" class="social-link" aria-label="Facebook">&#102;</a>
+          <a href="#" class="social-link" aria-label="TikTok">&#9834;</a>
+          <a href="#" class="social-link" aria-label="X/Twitter">&#120143;</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Par 4 The Course. All rights reserved.</span>
+      <span>Pinellas County, Florida</span>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Navbar scroll effect ───
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ─── Mobile menu ───
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    }
+
+    // ─── Scroll reveal ───
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+    // ─── Get Directions (mobile nav app vs desktop browser) ───
+    const directionsBtn = document.getElementById('directionsBtn');
+    const address = '22069 US Hwy 19 N, Clearwater, FL 33765';
+    const encodedAddress = encodeURIComponent(address);
+
+    directionsBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        // iOS will open Apple Maps by default, Android opens Google Maps
+        window.location.href = `https://maps.apple.com/?daddr=${encodedAddress}`;
+        setTimeout(() => {
+          window.location.href = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`;
+        }, 300);
+      } else {
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank');
+      }
+    });
+  </script>
+  <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+
+</body>
+</html>
