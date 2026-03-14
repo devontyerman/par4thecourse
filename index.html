@@ -907,6 +907,232 @@
       padding: 1rem 3rem;
     }
 
+    /* ─── HOW IT WORKS ─── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      counter-reset: step;
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+      counter-increment: step;
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(52, 199, 89, 0.3);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--green);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .perfect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .perfect-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      transition: border-color 0.2s;
+    }
+
+    .perfect-item:hover {
+      border-color: rgba(52, 199, 89, 0.25);
+    }
+
+    .perfect-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .perfect-item span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ─── FAQ ─── */
+    .faq-list {
+      max-width: 750px;
+      margin: 3rem auto 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.4rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--charcoal);
+    }
+
+    .faq-question:hover { color: var(--green); }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    .faq-chevron::before,
+    .faq-chevron::after {
+      content: '';
+      position: absolute;
+      background: var(--green);
+      border-radius: 2px;
+    }
+
+    .faq-chevron::before {
+      width: 14px;
+      height: 2.5px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .faq-chevron::after {
+      width: 2.5px;
+      height: 14px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-chevron::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 1.4rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    /* ─── LEAGUES ─── */
+    .league-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .league-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .league-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .league-features li::before {
+      content: '\2713';
+      color: var(--green-accent);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .league-visual {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .league-visual-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .league-visual h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .league-visual p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+
     /* ─── LOCATION / MAP ─── */
     .map-wrap {
       border-radius: 16px;
@@ -1092,6 +1318,12 @@
         border-bottom: none;
       }
 
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+
+      .perfect-grid { grid-template-columns: 1fr 1fr; }
+
+      .league-content { grid-template-columns: 1fr; }
+
       .map-info { flex-direction: column; gap: 1.5rem; text-align: center; }
 
       .map-address { flex-direction: column; }
@@ -1125,6 +1357,12 @@
 
       .drinks-grid { grid-template-columns: 1fr 1fr; }
 
+      .steps-grid { grid-template-columns: 1fr; }
+
+      .perfect-grid { grid-template-columns: 1fr; }
+
+      .league-content { grid-template-columns: 1fr; }
+
       .pricing-table thead th:last-child,
       .pricing-table td:last-child { display: none; }
 
@@ -1146,6 +1384,7 @@
       <li role="none"><a href="#simulators" role="menuitem" onclick="closeMenu()">Simulators</a></li>
       <li role="none"><a href="#owner" role="menuitem" onclick="closeMenu()">Our Story</a></li>
       <li role="none"><a href="#drinks" role="menuitem" onclick="closeMenu()">Food & Drinks</a></li>
+      <li role="none"><a href="courses.html" role="menuitem" onclick="closeMenu()">Courses</a></li>
       <li role="none"><a href="#pricing" role="menuitem" onclick="closeMenu()">Pricing</a></li>
       <li role="none"><a href="#location" role="menuitem" onclick="closeMenu()">Location</a></li>
       <li role="none"><a href="#booking" class="btn-book" role="menuitem" onclick="closeMenu()">Book Now</a></li>
@@ -1236,8 +1475,78 @@
     </div>
   </section>
 
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section id="how-it-works" class="section-dark">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width: 650px; margin: 0 auto;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Your Indoor Golf Experience, Simplified.</h2>
+        <p class="section-text" style="margin: 0 auto; color: rgba(255,255,255,0.65);">
+          Par 4 The Course makes it easy to enjoy world-class indoor golf using TrackMan simulator technology. Whether you're practicing your swing or playing a round with friends, getting started is simple.
+        </p>
+      </div>
+      <div class="steps-grid fade-up">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Book Your Bay</h3>
+          <p>Reserve a simulator online for yourself or your group — it only takes a minute.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Show Up & Tee Off</h3>
+          <p>Choose from over 180 courses and start playing right away. No experience needed.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Track Your Game</h3>
+          <p>TrackMan measures ball speed, spin, launch angle, and distance to help improve your game.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Play, Practice, or Compete</h3>
+          <p>Play a full round, work on your swing, or go head-to-head with friends in game modes.</p>
+        </div>
+      </div>
+
+      <div class="fade-up" style="margin-top: 4rem; text-align: center;">
+        <h3 class="section-title" style="font-size: 1.5rem; color: var(--white);">Perfect For</h3>
+        <div class="perfect-grid">
+          <div class="perfect-item">
+            <span class="perfect-icon">&#127948;</span>
+            <span>Golf practice sessions</span>
+          </div>
+          <div class="perfect-item">
+            <span class="perfect-icon">&#127759;</span>
+            <span>Playing famous courses with friends</span>
+          </div>
+          <div class="perfect-item">
+            <span class="perfect-icon">&#128106;</span>
+            <span>Family outings</span>
+          </div>
+          <div class="perfect-item">
+            <span class="perfect-icon">&#128188;</span>
+            <span>Corporate events & team building</span>
+          </div>
+          <div class="perfect-item">
+            <span class="perfect-icon">&#127874;</span>
+            <span>Birthday parties</span>
+          </div>
+          <div class="perfect-item">
+            <span class="perfect-icon">&#127942;</span>
+            <span>Competitive leagues</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top: 2.5rem;" class="fade-up">
+        <a href="#booking" class="btn-book" style="font-size: 0.95rem; padding: 0.9rem 2.5rem;">Book Your Bay</a>
+        <a href="courses.html" class="btn-book" style="font-size: 0.95rem; padding: 0.9rem 2.5rem; margin-left: 1rem; background: transparent; color: var(--green-accent); border: 2px solid var(--green-accent);">View Courses</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ SIMULATORS ═══ -->
-  <section id="simulators" class="section-dark">
+  <section id="simulators" class="section-dark" style="border-top: 1px solid rgba(255,255,255,0.06);">
     <div class="container">
       <div class="fade-up">
         <div class="section-label">Our Simulators</div>
@@ -1521,6 +1830,117 @@
     </div>
   </section>
 
+  <!-- ═══ LEAGUES ═══ -->
+  <section id="leagues" class="section-dark">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label">Leagues</div>
+        <h2 class="section-title">Indoor Golf Leagues.</h2>
+      </div>
+      <div class="league-content fade-up">
+        <div>
+          <p class="section-text" style="color: rgba(255,255,255,0.65);">
+            Join our monthly simulator leagues and compete against other golfers in the Clearwater area. Play weekly rounds on world-famous courses, track your scores on the leaderboard, and compete for prizes and bragging rights — all on TrackMan simulators.
+          </p>
+          <ul class="league-features">
+            <li>Weekly rounds on rotating courses</li>
+            <li>Full TrackMan stat tracking</li>
+            <li>Season leaderboards & standings</li>
+            <li>Prizes for top finishers</li>
+            <li>Open to all skill levels</li>
+            <li>Great way to meet local golfers</li>
+          </ul>
+          <div style="margin-top: 2rem;">
+            <a href="#booking" class="btn-book">Sign Up for a League</a>
+          </div>
+        </div>
+        <div class="league-visual">
+          <div class="league-visual-icon">&#127942;</div>
+          <h3>Monthly Leagues</h3>
+          <p>Coming soon — stay tuned for league registration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section id="faq" class="section-light">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto;">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Frequently Asked Questions.</h2>
+        <p class="section-text" style="margin: 0 auto;">
+          Everything you need to know about playing indoor golf at Par 4 The Course in Clearwater.
+        </p>
+      </div>
+      <div class="faq-list fade-up">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How long does a round take on a simulator?
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">A full 18-hole round typically takes about 45–60 minutes for one player. With a group of 4, expect around 2–2.5 hours. You can also play 9 holes or just hit the driving range for a shorter session.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How many players can play at once?
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Each simulator bay accommodates up to 6 players. Players take turns hitting, just like on a real course. It's a great social experience for groups of friends, families, or coworkers.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I need to bring my own clubs?
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Nope! We have clubs available for you to use at no extra charge. Of course, you're welcome to bring your own if you prefer — many golfers like using their own gear to get the most accurate TrackMan data.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is the simulator good for beginners?
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Absolutely. Our simulators are perfect for beginners — there's no pressure, no one watching, and TrackMan gives you instant feedback to help you learn faster. Many first-timers are surprised by how quickly they improve.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can groups play together?
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes! Groups are one of the best ways to enjoy our simulators. Book a bay for up to 6 people and play a round together, compete in closest-to-the-pin, or just take turns hitting. We also host corporate events and private parties.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What courses can I play?
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Our TrackMan simulators feature over 180 virtual courses, including 43 real PGA Tour venues like Pebble Beach, St Andrews, TPC Sawgrass, and Augusta National. <a href="courses.html" style="color: var(--green); font-weight: 600;">View our full course list</a>.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do you serve food and drinks?
+            <span class="faq-chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes — we serve cold beer, seltzers, soft drinks, and snacks. It's a relaxed, social atmosphere perfect for hanging out between swings.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ BOOKING ═══ -->
   <section id="booking" class="section-dark">
     <div class="container">
@@ -1578,6 +1998,7 @@
         <ul class="footer-links">
           <li><a href="#about">About</a></li>
           <li><a href="#simulators">Simulators</a></li>
+          <li><a href="courses.html">Courses</a></li>
           <li><a href="#owner">Our Story</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#location">Location</a></li>
@@ -1642,6 +2063,29 @@
     );
 
     document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+    // ─── FAQ Accordion ───
+    document.querySelectorAll('.faq-question').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach((openItem) => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = null;
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
 
     // ─── Get Directions (mobile nav app vs desktop browser) ───
     const directionsBtn = document.getElementById('directionsBtn');

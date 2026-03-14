@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Play Famous Golf Courses | TrackMan Simulator | Par 4 The Course Clearwater FL</title>
+  <meta name="description" content="Play 180+ world-famous golf courses on TrackMan simulators at Par 4 The Course in Clearwater, FL. Pebble Beach, St Andrews, Augusta National, TPC Sawgrass and more." />
+  <link rel="canonical" href="https://par4thecourse.vercel.app/courses.html" />
+  <meta property="og:title" content="Play Famous Golf Courses | Par 4 The Course Clearwater FL" />
+  <meta property="og:description" content="Play Pebble Beach, St Andrews, Augusta National and 180+ courses on TrackMan simulators in Clearwater, Florida." />
+  <meta property="og:url" content="https://par4thecourse.vercel.app/courses.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #1a5c2a;
+      --green-dark: #0f3d1a;
+      --green-light: #2a7a3d;
+      --green-accent: #34c759;
+      --white: #ffffff;
+      --off-white: #f5f7f5;
+      --charcoal: #1c1c1e;
+      --charcoal-light: #2c2c2e;
+      --gray: #8e8e93;
+      --gray-light: #d1d1d6;
+      --font-display: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--charcoal);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 61, 26, 0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--green-accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .btn-book {
+      display: inline-block;
+      background: var(--green-accent);
+      color: var(--charcoal);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.65rem 1.6rem;
+      border-radius: 50px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-book:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 199, 89, 0.4);
+      background: #3edf68;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ─── SHARED ─── */
+    section { padding: 6rem 2rem; }
+    .section-dark { background: var(--charcoal); color: var(--white); }
+    .section-light { background: var(--off-white); }
+    .section-green { background: linear-gradient(160deg, var(--green-dark), var(--green)); color: var(--white); }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .section-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--gray);
+      max-width: 680px;
+    }
+
+    .section-dark .section-text { color: rgba(255,255,255,0.65); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      padding: 10rem 2rem 5rem;
+      background: linear-gradient(160deg, var(--charcoal) 0%, var(--green-dark) 50%, var(--green) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 .accent { color: var(--green-accent); }
+
+    .page-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ─── CAROUSEL ─── */
+    .carousel-section { padding-bottom: 4rem; }
+
+    .carousel-wrap {
+      position: relative;
+      max-width: 900px;
+      margin: 3rem auto 0;
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--charcoal-light);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      touch-action: pan-y;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 3rem 2rem 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+    }
+
+    .carousel-overlay h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .carousel-overlay .course-location {
+      font-size: 0.85rem;
+      color: var(--green-accent);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .carousel-overlay p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      max-width: 500px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+
+    .carousel-btn:hover {
+      background: rgba(52, 199, 89, 0.4);
+      border-color: var(--green-accent);
+    }
+
+    .carousel-btn.prev { left: 1rem; }
+    .carousel-btn.next { right: 1rem; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1.2rem 0;
+      background: var(--charcoal-light);
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--green-accent);
+      transform: scale(1.2);
+    }
+
+    /* ─── STATS ─── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(52, 199, 89, 0.3);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 2.2rem;
+      color: var(--green-accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .cta-banner h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.5);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-brand .nav-logo { font-size: 1.2rem; }
+
+    .footer-brand p {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .footer h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--green-accent); }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .social-link:hover {
+      background: rgba(52, 199, 89, 0.15);
+      border-color: rgba(52, 199, 89, 0.3);
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--green-dark);
+        flex-direction: column;
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        transition: right 0.35s ease;
+        box-shadow: -4px 0 30px rgba(0,0,0,0.3);
+      }
+
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 1.1rem; }
+      .hamburger { display: flex; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .carousel-slide img { height: 320px; }
+
+      .carousel-overlay { padding: 2rem 1.2rem 1.2rem; }
+      .carousel-overlay h3 { font-size: 1.2rem; }
+      .carousel-overlay p { font-size: 0.85rem; }
+
+      .carousel-btn { width: 40px; height: 40px; font-size: 1rem; }
+
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-number { font-size: 1.8rem; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .carousel-slide img { height: 260px; }
+      .carousel-overlay h3 { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Par 4 The Course - Home">PAR 4 <span>THE COURSE</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about" onclick="closeMenu()">About</a></li>
+      <li><a href="index.html#simulators" onclick="closeMenu()">Simulators</a></li>
+      <li><a href="index.html#pricing" onclick="closeMenu()">Pricing</a></li>
+      <li><a href="index.html#location" onclick="closeMenu()">Location</a></li>
+      <li><a href="index.html#booking" class="btn-book" onclick="closeMenu()">Book Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">TrackMan Course Library</div>
+      <h1>Play <span class="accent">Famous Courses.</span></h1>
+      <p>Step onto the world's most iconic golf courses without leaving Clearwater. Over 180 laser-scanned courses available on our TrackMan simulators.</p>
+    </div>
+  </section>
+
+  <!-- ═══ COURSE CAROUSEL ═══ -->
+  <section class="section-dark carousel-section">
+    <div class="container">
+      <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto;">
+        <div class="section-label">Featured Courses</div>
+        <h2 class="section-title">Legendary Courses, One Swing Away.</h2>
+        <p class="section-text" style="margin: 0 auto; color: rgba(255,255,255,0.65);">
+          From the windswept links of Scotland to the coastal cliffs of California — play them all on TrackMan at Par 4 The Course.
+        </p>
+      </div>
+
+      <div class="carousel-wrap fade-up">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- 1. St Andrews -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1611374243169-5053b5c73672?w=900&h=480&fit=crop&q=80" alt="St Andrews Old Course in Scotland" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>St Andrews Old Course</h3>
+              <div class="course-location">St Andrews, Scotland</div>
+              <p>The birthplace of golf. This legendary links course has hosted The Open Championship 30 times and remains the most iconic course in the world.</p>
+            </div>
+          </div>
+          <!-- 2. Pebble Beach -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=900&h=480&fit=crop&q=80" alt="Pebble Beach Golf Links coastal course in California" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>Pebble Beach Golf Links</h3>
+              <div class="course-location">Pebble Beach, California</div>
+              <p>One of the most iconic coastal golf courses in the world, known for its dramatic ocean views and legendary tournament history.</p>
+            </div>
+          </div>
+          <!-- 3. Augusta National -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=900&h=480&fit=crop&q=80" alt="Augusta National Golf Club, home of The Masters" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>Augusta National Golf Club</h3>
+              <div class="course-location">Augusta, Georgia</div>
+              <p>Home of The Masters. Experience Amen Corner, the azalea-lined fairways, and the most prestigious course in competitive golf.</p>
+            </div>
+          </div>
+          <!-- 4. TPC Sawgrass -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1592919505780-303950717480?w=900&h=480&fit=crop&q=80" alt="TPC Sawgrass Stadium Course with island green" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>TPC Sawgrass</h3>
+              <div class="course-location">Ponte Vedra Beach, Florida</div>
+              <p>Home of THE PLAYERS Championship and the famous island green 17th hole — one of the most recognized par 3s in golf.</p>
+            </div>
+          </div>
+          <!-- 5. Bethpage Black -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1600011689032-8b628b8a8747?w=900&h=480&fit=crop&q=80" alt="Bethpage Black championship course in New York" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>Bethpage Black</h3>
+              <div class="course-location">Farmingdale, New York</div>
+              <p>A brutally challenging public course that has hosted the U.S. Open and PGA Championship. Known for its famous warning sign at the first tee.</p>
+            </div>
+          </div>
+          <!-- 6. Royal Birkdale -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1632932693498-902e128c4cbb?w=900&h=480&fit=crop&q=80" alt="Royal Birkdale links course in England" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>Royal Birkdale</h3>
+              <div class="course-location">Southport, England</div>
+              <p>One of the finest links courses in England's Open Championship rotation, with towering dunes and challenging coastal winds.</p>
+            </div>
+          </div>
+          <!-- 7. Torrey Pines -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=900&h=480&fit=crop&q=80" alt="Torrey Pines Golf Course overlooking the Pacific Ocean" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>Torrey Pines</h3>
+              <div class="course-location">La Jolla, California</div>
+              <p>Perched on cliffs overlooking the Pacific Ocean, this municipal gem hosts the Farmers Insurance Open and has staged the U.S. Open.</p>
+            </div>
+          </div>
+          <!-- 8. Pinehurst No. 2 -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1590075865003-e48277faa558?w=900&h=480&fit=crop&q=80" alt="Pinehurst No. 2 golf course in North Carolina" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>Pinehurst No. 2</h3>
+              <div class="course-location">Pinehurst, North Carolina</div>
+              <p>A Donald Ross masterpiece in the Sandhills. Its crowned, turtle-back greens make it one of the most demanding tests in American golf.</p>
+            </div>
+          </div>
+          <!-- 9. Muirfield Village -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1580128637001-5b5514802718?w=900&h=480&fit=crop&q=80" alt="Muirfield Village Golf Club in Dublin Ohio" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>Muirfield Village</h3>
+              <div class="course-location">Dublin, Ohio</div>
+              <p>Designed by Jack Nicklaus and home of the Memorial Tournament. A meticulously maintained course that tests every part of your game.</p>
+            </div>
+          </div>
+          <!-- 10. Harbour Town -->
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1563201515-adbe35c669c5?w=900&h=480&fit=crop&q=80" alt="Harbour Town Golf Links with iconic lighthouse" loading="lazy" />
+            <div class="carousel-overlay">
+              <h3>Harbour Town Golf Links</h3>
+              <div class="course-location">Hilton Head Island, South Carolina</div>
+              <p>Famous for its iconic lighthouse and tight, tree-lined fairways. Home of the RBC Heritage and a favorite among PGA Tour players.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous course">&#10094;</button>
+        <button class="carousel-btn next" id="carouselNext" aria-label="Next course">&#10095;</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="section-dark" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 4rem;">
+    <div class="container">
+      <div class="fade-up" style="text-align: center; max-width: 600px; margin: 0 auto;">
+        <div class="section-label">By the Numbers</div>
+        <h2 class="section-title">The TrackMan Simulator Experience.</h2>
+        <p class="section-text" style="margin: 0 auto; color: rgba(255,255,255,0.65);">
+          Professional-grade technology that brings the world's best courses to Clearwater, Florida.
+        </p>
+      </div>
+      <div class="stats-grid fade-up">
+        <div class="stat-card">
+          <div class="stat-number">180+</div>
+          <div class="stat-label">Virtual Golf Courses</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">43</div>
+          <div class="stat-label">Real Tour Venues</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Players Per Bay</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">40+</div>
+          <div class="stat-label">Data Points Per Shot</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">&#177;1 yd</div>
+          <div class="stat-label">Carry Accuracy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="section-green cta-banner">
+    <h2>Ready to Play a Legendary Course?</h2>
+    <p>Book a simulator bay at Par 4 The Course and tee off on the world's best — right here in Clearwater.</p>
+    <a href="index.html#booking" class="btn-book" style="font-size: 1rem; padding: 1rem 3rem;">Book Your Bay</a>
+  </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="Par 4 The Course - Home">PAR 4 <span>THE COURSE</span></a>
+        <p>Clearwater's premier indoor golf simulator experience, serving Tampa, St. Petersburg, and Pinellas County. Powered by TrackMan.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#simulators">Simulators</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="index.html#location">Location</a></li>
+          <li><a href="index.html#booking">Book Now</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+17273306548">&#9742; (727) 330-6548</a></li>
+          <li><a href="mailto:Tyson@par4tc.com">&#9993; Tyson@par4tc.com</a></li>
+          <li>&#128205; 22069 US Hwy 19 N<br />Clearwater, FL 33765</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">&#128247;</a>
+          <a href="#" class="social-link" aria-label="Facebook">&#102;</a>
+          <a href="#" class="social-link" aria-label="TikTok">&#9834;</a>
+          <a href="#" class="social-link" aria-label="X/Twitter">&#120143;</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Par 4 The Course. All rights reserved.</span>
+      <span>Pinellas County, Florida</span>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Mobile menu ───
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    }
+
+    // ─── Carousel ───
+    const track = document.getElementById('carouselTrack');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('carouselDots');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    let current = 0;
+    const total = slides.length;
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = index;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => goTo((current - 1 + total) % total));
+    nextBtn.addEventListener('click', () => goTo((current + 1) % total));
+
+    // Swipe support
+    let startX = 0;
+    let isDragging = false;
+
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) goTo((current + 1) % total);
+        else goTo((current - 1 + total) % total);
+      }
+    }, { passive: true });
+
+    // Auto-advance every 6s
+    let autoPlay = setInterval(() => goTo((current + 1) % total), 6000);
+    const wrap = document.querySelector('.carousel-wrap');
+    wrap.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    wrap.addEventListener('mouseleave', () => {
+      autoPlay = setInterval(() => goTo((current + 1) % total), 6000);
+    });
+
+    // ─── Scroll reveal ───
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  </script>
+
+</body>
+</html>
