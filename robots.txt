@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://par4thecourse.vercel.app/sitemap.xml

@@ -3,8 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Par 4 The Course — Premier Indoor Golf Simulators | Pinellas County, FL</title>
-  <meta name="description" content="Par 4 The Course offers premium TrackMan golf simulator experiences in Pinellas County, Florida. Book your session today." />
+  <title>Indoor Golf Simulator Clearwater FL | Par 4 The Course</title>
+  <meta name="description" content="Play world-class indoor golf at Par 4 The Course in Clearwater, Florida. TrackMan simulators, 180+ courses, bays for up to 6 players. Near Tampa &amp; St. Petersburg." />
+  <meta name="keywords" content="indoor golf simulator Clearwater, golf simulator Tampa, golf simulator St Petersburg, TrackMan simulator Florida, indoor golf Clearwater FL, indoor golf near Tampa, indoor golf near St Pete" />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="US-FL" />
+  <meta name="geo.placename" content="Clearwater, Florida" />
+  <meta name="geo.position" content="28.0655;-82.7383" />
+  <meta name="ICBM" content="28.0655, -82.7383" />
+  <link rel="canonical" href="https://par4thecourse.vercel.app/" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Indoor Golf Simulator in Clearwater FL | Par 4 The Course" />
+  <meta property="og:description" content="Play world-class indoor golf at Par 4 The Course in Clearwater, Florida. TrackMan simulators, 180+ courses, bays for up to 6 players. Near Tampa &amp; St. Petersburg." />
+  <meta property="og:url" content="https://par4thecourse.vercel.app/" />
+  <meta property="og:site_name" content="Par 4 The Course" />
+  <meta property="og:locale" content="en_US" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Indoor Golf Simulator in Clearwater FL | Par 4 The Course" />
+  <meta name="twitter:description" content="Play world-class indoor golf at Par 4 The Course in Clearwater, Florida. TrackMan simulators, 180+ courses, bays for up to 6 players." />
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["SportsActivityLocation", "LocalBusiness"],
+    "name": "Par 4 The Course",
+    "description": "Premier indoor golf simulator facility in Clearwater, Florida featuring TrackMan technology. Offering 180+ virtual courses, bays for up to 6 players, and a full bar. Serving golfers from Clearwater, Tampa, St. Petersburg, and Pinellas County.",
+    "url": "https://par4thecourse.vercel.app/",
+    "telephone": "+1-727-330-6548",
+    "email": "Tyson@par4tc.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "22069 US Hwy 19 N",
+      "addressLocality": "Clearwater",
+      "addressRegion": "FL",
+      "postalCode": "33765",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 28.0655,
+      "longitude": -82.7383
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Clearwater", "sameAs": "https://en.wikipedia.org/wiki/Clearwater,_Florida" },
+      { "@type": "City", "name": "Tampa", "sameAs": "https://en.wikipedia.org/wiki/Tampa,_Florida" },
+      { "@type": "City", "name": "St. Petersburg", "sameAs": "https://en.wikipedia.org/wiki/St._Petersburg,_Florida" },
+      { "@type": "AdministrativeArea", "name": "Pinellas County" }
+    ],
+    "priceRange": "$25–$60/hr",
+    "currenciesAccepted": "USD",
+    "paymentAccepted": "Cash, Credit Card",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Simulator Bay Rentals",
+      "itemListElement": [
+        { "@type": "Offer", "name": "1 Player", "price": "25.00", "priceCurrency": "USD", "unitText": "per hour" },
+        { "@type": "Offer", "name": "2 Players", "price": "35.00", "priceCurrency": "USD", "unitText": "per hour" },
+        { "@type": "Offer", "name": "3 Players", "price": "45.00", "priceCurrency": "USD", "unitText": "per hour" },
+        { "@type": "Offer", "name": "4 Players", "price": "55.00", "priceCurrency": "USD", "unitText": "per hour" },
+        { "@type": "Offer", "name": "Up to 6 Players", "price": "60.00", "priceCurrency": "USD", "unitText": "per hour" }
+      ]
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "TrackMan Golf Simulators", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Beer and Beverages", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Climate Controlled", "value": true }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
@@ -27,6 +95,18 @@
     }
 
     html { scroll-behavior: smooth; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
     body {
       font-family: var(--font-body);
@@ -1028,30 +1108,32 @@
 <body>
 
   <!-- ═══ NAVBAR ═══ -->
-  <nav class="navbar" id="navbar">
-    <a href="#hero" class="nav-logo">PAR 4 <span>THE COURSE</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about" onclick="closeMenu()">About</a></li>
-      <li><a href="#simulators" onclick="closeMenu()">Simulators</a></li>
-      <li><a href="#owner" onclick="closeMenu()">Our Story</a></li>
-      <li><a href="#drinks" onclick="closeMenu()">Food & Drinks</a></li>
-      <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
-      <li><a href="#booking" class="btn-book" onclick="closeMenu()">Book Now</a></li>
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo" aria-label="Par 4 The Course - Home">PAR 4 <span>THE COURSE</span></a>
+    <ul class="nav-links" id="navLinks" role="menubar">
+      <li role="none"><a href="#about" role="menuitem" onclick="closeMenu()">About</a></li>
+      <li role="none"><a href="#simulators" role="menuitem" onclick="closeMenu()">Simulators</a></li>
+      <li role="none"><a href="#owner" role="menuitem" onclick="closeMenu()">Our Story</a></li>
+      <li role="none"><a href="#drinks" role="menuitem" onclick="closeMenu()">Food & Drinks</a></li>
+      <li role="none"><a href="#pricing" role="menuitem" onclick="closeMenu()">Pricing</a></li>
+      <li role="none"><a href="#location" role="menuitem" onclick="closeMenu()">Location</a></li>
+      <li role="none"><a href="#booking" class="btn-book" role="menuitem" onclick="closeMenu()">Book Now</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
+  <main>
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="hero">
     <div class="hero-grid"></div>
     <div class="hero-flag">&#9971;</div>
     <div class="hero-content">
       <div class="hero-badge">Pinellas County's Premier Simulator Experience</div>
-      <h1>Tee Off<br /><span class="accent">Any Time.</span></h1>
-      <p>Experience world-class indoor golf powered by TrackMan technology. Play legendary courses, sharpen your game, and enjoy great company — rain or shine.</p>
-      <a href="#booking" class="btn-book">Book Your Bay</a>
+      <h1><span class="sr-only">Indoor Golf Simulator in Clearwater, Florida — </span>Tee Off<br /><span class="accent">Any Time.</span></h1>
+      <p>Experience world-class indoor golf powered by TrackMan technology in Clearwater, FL. Play legendary courses, sharpen your game, and enjoy great company — rain or shine. Serving Tampa, St. Petersburg, and Pinellas County.</p>
+      <a href="#booking" class="btn-book" aria-label="Book your indoor golf simulator bay">Book Your Bay</a>
     </div>
     <a href="#about" class="hero-scroll">
       Explore
@@ -1069,9 +1151,9 @@
         </div>
         <div>
           <div class="section-label">About Us</div>
-          <h2 class="section-title">Clearwater's Home for<br />Indoor Golf.</h2>
+          <h2 class="section-title">About Par 4 The Course —<br />Indoor Golf in Clearwater, FL.</h2>
           <p class="section-text">
-            Welcome to Par 4 The Course, Clearwater's destination for year-round indoor golf powered by TrackMan technology. Whether you're a seasoned golfer, a weekend player, or just looking for a fun experience with friends, our simulators deliver a premium golf experience for every skill level.
+            Welcome to Par 4 The Course, Clearwater's destination for year-round <strong>indoor golf</strong> powered by TrackMan technology. Whether you're a seasoned golfer, a weekend player, or just looking for a fun experience with friends, our simulators deliver a premium golf experience for every skill level. Conveniently located for golfers from Tampa, St. Petersburg, and across Pinellas County.
           </p>
           <div class="feature-chips">
             <span class="chip">All Skill Levels</span>
@@ -1087,12 +1169,12 @@
         <div class="about-detail-card">
           <div class="about-detail-icon">&#128218;</div>
           <h3>Our Story</h3>
-          <p>Par 4 The Course was created with one goal: make golf more accessible, enjoyable, and completely weatherproof for our community. Florida weather can be unpredictable, so we built a space where golfers can play, practice, and compete rain or shine, day or night.</p>
+          <p>Par 4 The Course was created with one goal: make golf more accessible, enjoyable, and completely weatherproof for our community. Florida weather can be unpredictable, so we built a space where golfers can play, practice, and compete rain or shine, day or night. Check our <a href="#pricing" style="color: var(--green); font-weight: 600;">indoor golf simulator pricing</a> to get started.</p>
         </div>
         <div class="about-detail-card">
           <div class="about-detail-icon">&#127942;</div>
           <h3>Our Technology</h3>
-          <p>Our facility features two state-of-the-art TrackMan simulators, trusted by PGA professionals around the world for their precision and realism. With access to over 180 virtual golf courses, including 43 Tour venues, you can experience some of the most iconic courses on the planet without leaving Clearwater.</p>
+          <p>Our Clearwater facility features two state-of-the-art TrackMan simulators, trusted by PGA professionals around the world for their precision and realism. With access to over 180 virtual golf courses, including 43 Tour venues, you can experience some of the most iconic courses on the planet without leaving Clearwater. <a href="#booking" style="color: var(--green); font-weight: 600;">Book your simulator bay</a> today.</p>
         </div>
       </div>
 
@@ -1129,9 +1211,9 @@
     <div class="container">
       <div class="fade-up">
         <div class="section-label">Our Simulators</div>
-        <h2 class="section-title">Powered by TrackMan.</h2>
+        <h2 class="section-title">TrackMan Golf Simulators.</h2>
         <p class="section-text">
-          We run multiple TrackMan simulators — the same tour-standard launch monitor and simulator system trusted by PGA Tour professionals, top coaches, and elite club fitters worldwide. Every swing is captured with military-grade radar precision, giving you real data on ball speed, launch angle, spin rate, carry distance, and more.
+          Our Clearwater facility features TrackMan simulators — the same tour-standard launch monitor and simulator system trusted by PGA Tour professionals, top coaches, and elite club fitters worldwide. Every swing is captured with military-grade radar precision, giving you real data on ball speed, launch angle, spin rate, carry distance, and more. The best <strong>indoor golf simulator experience near Tampa and St. Petersburg</strong>.
         </p>
         <div class="trackman-badge">&#127948; Official TrackMan Facility</div>
       </div>
@@ -1160,7 +1242,7 @@
     <div class="container">
       <div class="fade-up" style="text-align:center; max-width: 650px; margin: 0 auto;">
         <div class="section-label">Why TrackMan?</div>
-        <h2 class="section-title">Not All Simulators Are Equal.</h2>
+        <h2 class="section-title">Why TrackMan Is the Best Indoor Golf Simulator.</h2>
         <p class="section-text" style="margin: 0 auto; color: rgba(255,255,255,0.65);">
           There are plenty of simulator brands out there — but TrackMan is in a league of its own. Here's how it stacks up against competitors like SkyTrak, Garmin Approach, FlightScope, and others.
         </p>
@@ -1354,9 +1436,9 @@
     <div class="container">
       <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto 1rem;">
         <div class="section-label">Pricing</div>
-        <h2 class="section-title">Simple, Transparent Pricing.</h2>
+        <h2 class="section-title">Indoor Golf Simulator Pricing.</h2>
         <p class="section-text" style="margin: 0 auto;">
-          Reserve a bay and bring your crew. All sessions include full TrackMan access, 180+ courses, and game modes.
+          Reserve a bay and bring your crew. All sessions at our Clearwater facility include full TrackMan access, 180+ courses, and game modes. <a href="#booking" style="color: var(--green); font-weight: 600;">Book your simulator bay</a> today.
         </p>
       </div>
       <div class="pricing-table-wrap fade-up">
@@ -1414,9 +1496,9 @@
     <div class="container">
       <div class="booking-content fade-up">
         <div class="section-label">Book Your Session</div>
-        <h2 class="section-title">Ready to Play?</h2>
+        <h2 class="section-title">Book Your Indoor Golf Simulator Bay.</h2>
         <p class="section-text" style="margin: 0 auto; color: rgba(255,255,255,0.65);">
-          Reserve your bay in just a few clicks. Walk in, grab a drink, and start swinging.
+          Reserve your bay at Clearwater's top indoor golf facility in just a few clicks. Walk in, grab a drink, and start swinging. Easily accessible from Tampa and St. Petersburg.
         </p>
         <div style="margin-top: 3rem; background: rgba(255,255,255,0.04); border-radius: 20px; padding: 1.5rem; min-height: 600px;">
           <iframe src="https://api.leadconnectorhq.com/widget/booking/LfgSGIXADvvt9rfVnADc" style="width: 100%; min-height: 700px; border: none; overflow: hidden; border-radius: 12px;" scrolling="no" id="LfgSGIXADvvt9rfVnADc_1773518049180"></iframe>
@@ -1430,9 +1512,9 @@
     <div class="container">
       <div class="fade-up" style="text-align:center; max-width: 600px; margin: 0 auto 2.5rem;">
         <div class="section-label">Location</div>
-        <h2 class="section-title">Find Us in Clearwater.</h2>
+        <h2 class="section-title">Golf Simulator Near Tampa & St. Petersburg.</h2>
         <p class="section-text" style="margin: 0 auto;">
-          We're located on US-19 in Clearwater — easy to find, plenty of parking, and just minutes from St. Pete, Dunedin, and Tampa.
+          Our indoor golf simulator facility is located on US-19 in Clearwater, FL — easy to find, plenty of parking, and conveniently accessible for golfers coming from Tampa, St. Petersburg, Dunedin, and all of Pinellas County. <a href="#booking" style="color: var(--green); font-weight: 600;">Visit our Clearwater golf simulator location</a> today.
         </p>
       </div>
       <div class="map-wrap fade-up">
@@ -1452,12 +1534,14 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ═══ FOOTER ═══ -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#hero" class="nav-logo">PAR 4 <span>THE COURSE</span></a>
-        <p>Pinellas County's premier indoor golf simulator experience. Powered by TrackMan. Open to everyone.</p>
+        <a href="#hero" class="nav-logo" aria-label="Par 4 The Course - Home">PAR 4 <span>THE COURSE</span></a>
+        <p>Clearwater's premier indoor golf simulator experience, serving Tampa, St. Petersburg, and Pinellas County. Powered by TrackMan. Open to everyone.</p>
       </div>
       <div>
         <h4>Navigate</h4>
@@ -1466,6 +1550,7 @@
           <li><a href="#simulators">Simulators</a></li>
           <li><a href="#owner">Our Story</a></li>
           <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#location">Location</a></li>
           <li><a href="#booking">Book Now</a></li>
         </ul>
       </div>
