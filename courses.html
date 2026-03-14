@@ -509,7 +509,8 @@
 
       section { padding: 4rem 1.5rem; }
 
-      .carousel-slide img { height: 320px; }
+      .carousel-slide img,
+      .carousel-slide > div:first-child { height: 320px !important; }
 
       .carousel-overlay { padding: 2rem 1.2rem 1.2rem; }
       .carousel-overlay h3 { font-size: 1.2rem; }
@@ -525,7 +526,8 @@
     }
 
     @media (max-width: 480px) {
-      .carousel-slide img { height: 260px; }
+      .carousel-slide img,
+      .carousel-slide > div:first-child { height: 260px !important; }
       .carousel-overlay h3 { font-size: 1.05rem; }
     }
   </style>
@@ -573,7 +575,7 @@
         <div class="carousel-track" id="carouselTrack">
           <!-- 1. St Andrews -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1611374243169-5053b5c73672?w=900&h=480&fit=crop&q=80" alt="St Andrews Old Course in Scotland" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>St Andrews Old Course</h3>
               <div class="course-location">St Andrews, Scotland</div>
@@ -582,7 +584,7 @@
           </div>
           <!-- 2. Pebble Beach -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=900&h=480&fit=crop&q=80" alt="Pebble Beach Golf Links coastal course in California" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>Pebble Beach Golf Links</h3>
               <div class="course-location">Pebble Beach, California</div>
@@ -591,7 +593,7 @@
           </div>
           <!-- 3. Augusta National -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=900&h=480&fit=crop&q=80" alt="Augusta National Golf Club, home of The Masters" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>Augusta National Golf Club</h3>
               <div class="course-location">Augusta, Georgia</div>
@@ -600,7 +602,7 @@
           </div>
           <!-- 4. TPC Sawgrass -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1592919505780-303950717480?w=900&h=480&fit=crop&q=80" alt="TPC Sawgrass Stadium Course with island green" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>TPC Sawgrass</h3>
               <div class="course-location">Ponte Vedra Beach, Florida</div>
@@ -609,7 +611,7 @@
           </div>
           <!-- 5. Bethpage Black -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1600011689032-8b628b8a8747?w=900&h=480&fit=crop&q=80" alt="Bethpage Black championship course in New York" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>Bethpage Black</h3>
               <div class="course-location">Farmingdale, New York</div>
@@ -618,7 +620,7 @@
           </div>
           <!-- 6. Royal Birkdale -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1632932693498-902e128c4cbb?w=900&h=480&fit=crop&q=80" alt="Royal Birkdale links course in England" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>Royal Birkdale</h3>
               <div class="course-location">Southport, England</div>
@@ -627,7 +629,7 @@
           </div>
           <!-- 7. Torrey Pines -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=900&h=480&fit=crop&q=80" alt="Torrey Pines Golf Course overlooking the Pacific Ocean" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>Torrey Pines</h3>
               <div class="course-location">La Jolla, California</div>
@@ -636,7 +638,7 @@
           </div>
           <!-- 8. Pinehurst No. 2 -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1590075865003-e48277faa558?w=900&h=480&fit=crop&q=80" alt="Pinehurst No. 2 golf course in North Carolina" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>Pinehurst No. 2</h3>
               <div class="course-location">Pinehurst, North Carolina</div>
@@ -645,7 +647,7 @@
           </div>
           <!-- 9. Muirfield Village -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1580128637001-5b5514802718?w=900&h=480&fit=crop&q=80" alt="Muirfield Village Golf Club in Dublin Ohio" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>Muirfield Village</h3>
               <div class="course-location">Dublin, Ohio</div>
@@ -654,7 +656,7 @@
           </div>
           <!-- 10. Harbour Town -->
           <div class="carousel-slide">
-            <img src="https://images.unsplash.com/photo-1563201515-adbe35c669c5?w=900&h=480&fit=crop&q=80" alt="Harbour Town Golf Links with iconic lighthouse" loading="lazy" />
+            <div style="width:100%;height:480px;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.2;">&#9971;</div>
             <div class="carousel-overlay">
               <h3>Harbour Town Golf Links</h3>
               <div class="course-location">Hilton Head Island, South Carolina</div>
