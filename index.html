@@ -1133,6 +1133,132 @@
       font-size: 0.9rem;
     }
 
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--white);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.5rem 2rem;
+      position: relative;
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.3s;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: var(--off-white);
+      color: var(--charcoal);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover { background: var(--gray-light); }
+
+    .modal h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+
+    .modal .modal-sub {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--gray-light);
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    .modal .btn-book {
+      width: 100%;
+      text-align: center;
+      padding: 0.9rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .modal .placeholder-note {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-style: italic;
+    }
+
     /* ─── LOCATION / MAP ─── */
     .map-wrap {
       border-radius: 16px;
@@ -1385,6 +1511,7 @@
       <li role="none"><a href="#owner" role="menuitem" onclick="closeMenu()">Our Story</a></li>
       <li role="none"><a href="#drinks" role="menuitem" onclick="closeMenu()">Food & Drinks</a></li>
       <li role="none"><a href="courses.html" role="menuitem" onclick="closeMenu()">Courses</a></li>
+      <li role="none"><a href="#leagues" role="menuitem" onclick="closeMenu()">Leagues</a></li>
       <li role="none"><a href="#pricing" role="menuitem" onclick="closeMenu()">Pricing</a></li>
       <li role="none"><a href="#location" role="menuitem" onclick="closeMenu()">Location</a></li>
       <li role="none"><a href="#booking" class="btn-book" role="menuitem" onclick="closeMenu()">Book Now</a></li>
@@ -1851,7 +1978,7 @@
             <li>Great way to meet local golfers</li>
           </ul>
           <div style="margin-top: 2rem;">
-            <a href="#booking" class="btn-book">Sign Up for a League</a>
+            <a href="#" class="btn-book" id="openLeagueModal">Sign Up for a League</a>
           </div>
         </div>
         <div class="league-visual">
@@ -1984,6 +2111,44 @@
     </div>
   </section>
 
+  <!-- ═══ LEAGUE SIGNUP MODAL ═══ -->
+  <div class="modal-overlay" id="leagueModal">
+    <div class="modal">
+      <button class="modal-close" id="closeLeagueModal" aria-label="Close">&times;</button>
+      <h3>Join a League</h3>
+      <p class="modal-sub">Fill out the form below and we'll get you signed up for our next indoor golf league.</p>
+      <form id="leagueForm" onsubmit="return false;">
+        <div class="form-group">
+          <label for="league-name">Full Name</label>
+          <input type="text" id="league-name" placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="league-email">Email</label>
+          <input type="email" id="league-email" placeholder="you@email.com" />
+        </div>
+        <div class="form-group">
+          <label for="league-phone">Phone</label>
+          <input type="tel" id="league-phone" placeholder="(727) 555-0000" />
+        </div>
+        <div class="form-group">
+          <label for="league-skill">Skill Level</label>
+          <select id="league-skill">
+            <option value="" disabled selected>Select your level</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="league-notes">Anything else?</label>
+          <textarea id="league-notes" placeholder="Questions, preferences, etc."></textarea>
+        </div>
+        <button type="submit" class="btn-book">Submit</button>
+      </form>
+      <p class="placeholder-note">* League registration form coming soon — this is a placeholder</p>
+    </div>
+  </div>
+
   </main>
 
   <!-- ═══ FOOTER ═══ -->
@@ -1999,6 +2164,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#simulators">Simulators</a></li>
           <li><a href="courses.html">Courses</a></li>
+          <li><a href="#leagues">Leagues</a></li>
           <li><a href="#owner">Our Story</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#location">Location</a></li>
@@ -2063,6 +2229,28 @@
     );
 
     document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+    // ─── League Modal ───
+    const leagueModal = document.getElementById('leagueModal');
+    document.getElementById('openLeagueModal').addEventListener('click', (e) => {
+      e.preventDefault();
+      leagueModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeLeagueModal() {
+      leagueModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('closeLeagueModal').addEventListener('click', closeLeagueModal);
+    leagueModal.addEventListener('click', (e) => {
+      if (e.target === leagueModal) closeLeagueModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && leagueModal.classList.contains('open')) closeLeagueModal();
+    });
 
     // ─── FAQ Accordion ───
     document.querySelectorAll('.faq-question').forEach((btn) => {
